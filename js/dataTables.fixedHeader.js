@@ -211,10 +211,12 @@ $.extend( FixedHeader.prototype, {
 		var that = this;
 		var dt = this.s.dt;
 
+
+		$("#content").scroll(function () {
+			that._scroll();
+		});
+
 		$(window)
-			.on( 'scroll'+this.s.namespace, function () {
-				that._scroll();
-			} )
 			.on( 'resize'+this.s.namespace, function () {
 				that.s.position.windowHeight = $(window).height();
 				that.update();
@@ -518,9 +520,12 @@ $.extend( FixedHeader.prototype, {
 	 */
 	_scroll: function ( forceChange )
 	{
-		var windowTop = $(document).scrollTop();
-		var windowLeft = $(document).scrollLeft();
 		var position = this.s.position;
+		var toolbarHeight = $("#toolbar").height();
+		var marginToolbar = position.theadTop - toolbarHeight;
+		var windowTop = $("#content").scrollTop() + toolbarHeight - marginToolbar;
+		var windowLeft = $("#content").scrollLeft();
+
 		var headerMode, footerMode;
 
 		if ( ! this.s.enable ) {
@@ -528,7 +533,7 @@ $.extend( FixedHeader.prototype, {
 		}
 
 		if ( this.c.header ) {
-			if ( ! position.visible || windowTop <= position.theadTop - this.c.headerOffset ) {
+			if ( ! position.visible || windowTop <= position.theadTop - position.theadHeight - this.c.headerOffset ) {
 				headerMode = 'in-place';
 			}
 			else if ( windowTop <= position.tfootTop - position.theadHeight - this.c.headerOffset ) {
