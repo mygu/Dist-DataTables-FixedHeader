@@ -14,8 +14,7 @@
         "DataTables"
     ],
     "dependencies": {
-        "jquery": ">=1.7",
-        "datatables.net": ">=1.10.9"
+        "jquery": ">=1.7"
     },
     "moduleType": [
         "globals",
