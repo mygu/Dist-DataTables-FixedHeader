@@ -2,7 +2,8 @@
     "name": "datatables.net-fixedheader",
     "description": "FixedHeader for DataTables ",
     "main": [
-        "js/dataTables.fixedHeader.js"
+        "js/dataTables.fixedHeader.js",
+        "css/fixedHeader.dataTables.css"
     ],
     "keywords": [
         "fixed headers",
