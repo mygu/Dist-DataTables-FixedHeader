@@ -207,11 +207,13 @@
             var dt = this.s.dt;
 
             $(this.c.element).scroll(function () {
-                if (that.s.position.theadTop <= that.initTheadTop) {
-                    //that._positions();
-                    that.s.position = $.extend(true, {}, that.initPosition);
+                if ($(that.c.element).length > 0) {
+                    if (that.s.position.theadTop <= that.initTheadTop) {
+                        //that._positions();
+                        that.s.position = $.extend(true, {}, that.initPosition);
+                    }
+                    that._scroll();
                 }
-                that._scroll();
             });
 
             // $(window)
