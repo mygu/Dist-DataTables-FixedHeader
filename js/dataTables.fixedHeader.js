@@ -206,7 +206,7 @@
             var that = this;
             var dt = this.s.dt;
 
-            $("#content").scroll(function () {
+            $(this.c.element).scroll(function () {
                 if (that.s.position.theadTop <= that.initTheadTop) {
                     //that._positions();
                     that.s.position = $.extend(true, {}, that.initPosition);
@@ -525,8 +525,8 @@
             var position = this.s.position;
             var toolbarHeight = $("#toolbar").height();
             var marginToolbar = position.theadTop - toolbarHeight;
-            var windowTop = $("#content").scrollTop() + toolbarHeight - marginToolbar;
-            var windowLeft = $("#content").scrollLeft();
+            var windowTop = $(this.c.element).scrollTop() + toolbarHeight - marginToolbar;
+            var windowLeft = $(this.c.element).scrollLeft();
 
             var headerMode, footerMode;
 
@@ -586,6 +586,7 @@
      * @static
      */
     FixedHeader.defaults = {
+        element: null,
         header: true,
         footer: false,
         headerOffset: 0,
